@@ -1,5 +1,5 @@
 import FixedButton from "@/components/instances/FixedButton.jsx";
-import ListPageCards from "@/components/instances/ListPageCards.jsx";
+import ListPageCards from "@/components/list/ListPageCards.jsx";
 import Search from "@/components/list/Search";
 import useGetData from "@/hooks/useGetData";
 import { DeviceSize } from "@/styles/DeviceSize";

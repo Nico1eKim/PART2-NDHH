@@ -22,6 +22,8 @@ function Layout({ path = "" }) {
   const reactions = useGetData("RECIPIENTS_REACTIONS", id, DEP);
   const [delList, setDelList] = useState([]);
 
+  checkEditToken(id, path);
+
   return (
     recipientData &&
     messageData && (

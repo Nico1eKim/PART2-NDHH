@@ -152,6 +152,7 @@ const Content = styled.div`
   p {
     font-size: 1.6rem;
     font-weight: 400;
+    line-height: normal;
   }
 
   display: -webkit-box;

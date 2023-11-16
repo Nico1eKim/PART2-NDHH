@@ -75,7 +75,7 @@ const Wrapper_Emoji = styled.div`
   }
 
   @media (max-width: ${DeviceSize.mobile}) {
-    right: -12rem;
+    right: -9rem;
   }
 `;
 
