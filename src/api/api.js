@@ -9,11 +9,11 @@ import { BASE_URL, ENDPOINTS } from "@/api/config";
  * @returns {Promise<Object>} - API 응답을 나타내는 Promise 객체
  */
 
-async function api(type, method, path, postData, limit, nextURL) {
+async function api(type, method, path, postData, limit, offset) {
   const endpoint = ENDPOINTS[type][method];
   let url = typeof endpoint === "function" ? BASE_URL + endpoint(path) : BASE_URL + endpoint;
   if (limit) url = url + `?limit=${limit}`;
-  if (nextURL) url = nextURL;
+  if (offset) url = url + `?offset=${offset}`;
 
   switch (method) {
     case "GET": {

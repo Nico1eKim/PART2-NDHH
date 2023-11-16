@@ -17,14 +17,14 @@ import { useNavigate } from "react-router-dom";
  *@returns {Object|null} - 가져온 데이터 또는 null (초기값)
  */
 
-function useGetData(type, path, limit, DEP) {
+function useGetData(type, path, DEP, limit, offset) {
   const [data, setData] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     (async function () {
       try {
-        const result = await api(type, "GET", path, null, limit);
+        const result = await api(type, "GET", path, null, limit, offset);
 
         if (["RECIPIENTS_ID", "BACKGROUND_IMGS", "PROFILE_IMGS", "MESSAGES"].includes(type)) return setData(result);
 

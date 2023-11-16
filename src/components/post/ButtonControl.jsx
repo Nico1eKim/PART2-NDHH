@@ -6,7 +6,7 @@ import useGetWindowWidth from "@/hooks/useGetWindowWidth";
 import { DeviceSizeNum } from "@/styles/DeviceSize";
 import BackBtn from "@/components/post/BackBtn";
 
-function ButtonControl({ name, setDEP, path, delList, setDelList, setOffset }) {
+function ButtonControl({ recipientData, setDEP, path, delList, setDelList, setOffset }) {
   const windowWidth = useGetWindowWidth();
   const password = recipientData.name.slice(-4);
   const userName = recipientData.name.slice(0, -4);
