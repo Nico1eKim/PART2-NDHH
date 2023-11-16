@@ -1,14 +1,14 @@
-import styled, { css } from "styled-components";
-import PropTypes from "prop-types";
-import { FONT14B, FONT16B, FONT16, FONT18, FONT18B, FONT28B } from "@/styles/FontStyles";
-import { DeviceSize } from "@/styles/DeviceSize";
-import HeaderEmojis from "@/components/instances/HeaderEmoji";
-import ProfileImgList from "@/components/commons/ProfileImgList";
-import Button from "@/components/commons/Button";
 import Logo from "@/assets/Logo.svg";
 import divideLine from "@/assets/Rectangle_38.svg";
-import ShareDropdownButton from "./instances/ShareDropdownButton";
+import Button from "@/components/commons/Button";
+import ProfileImgList from "@/components/commons/ProfileImgList";
+import HeaderEmojis from "@/components/instances/HeaderEmoji";
+import { DeviceSize } from "@/styles/DeviceSize";
+import { FONT14B, FONT16B, FONT18, FONT18B, FONT28B } from "@/styles/FontStyles";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
+import ShareDropdownButton from "./instances/ShareDropdownButton";
 
 Header.propTypes = {
   serviceType: PropTypes.oneOf([true, false]),

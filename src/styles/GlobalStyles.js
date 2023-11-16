@@ -1,5 +1,4 @@
 import { BLUE, GRAYSCALE, GREEN, MAIN, ORANGE, PURPLE } from "@/styles/ColorStyles";
-import { FONT16 } from "@/styles/FontStyles";
 import { createGlobalStyle, keyframes } from "styled-components";
 import { FONTFAMILY } from './FontStyles';
 
@@ -53,7 +52,7 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
 
- html{
+  html{
     line-height: 1;
     font-size: 62.5%;
     font-family: 'Noto Sans KR', sans-serif;

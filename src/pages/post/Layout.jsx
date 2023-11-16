@@ -3,9 +3,10 @@ import ButtonControl from "@/components/post/ButtonControl";
 import CardGrid from "@/components/post/CardGrid";
 import useGetData from "@/hooks/useGetData";
 import { DeviceSize } from "@/styles/DeviceSize";
+import { useState, useRef, useEffect } from "react";
+import api from "@/api/api";
 import { checkEditToken } from "@/utils/checkEditToken";
 import propTypes from "prop-types";
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -14,17 +15,52 @@ Layout.propTypes = {
   path: propTypes.oneOf(["edit", ""]),
 };
 
+const LIMIT = 8;
+
 function Layout({ path = "" }) {
   const { id } = useParams();
   const [DEP, setDEP] = useState([]);
   const [delList, setDelList] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [hasNext, setHasNext] = useState("");
+  const [items, setItems] = useState([]);
+  const target = useRef();
+
+  const handleLoad = async (offset, LIMIT) => {
+    const { results, next } = await api("RECIPIENTS_MESSAGES", "GET", id, null, null, hasNext);
+    if (offset === 0) {
+      setItems(results);
+    } else {
+      setItems([...items, ...results]);
+    }
+    setOffset(offset + LIMIT);
+    setHasNext(next);
+  };
+
+  useEffect(() => {
+    let options = {
+      threshold: "1.0",
+    };
+
+    let handleIntersection = async ([entries], observer) => {
+      if (entries.isIntersecting) {
+        hasNext && (await handleLoad(offset, LIMIT));
+        observer.unobserve(entries.target);
+      }
+    };
+
+    const io = new IntersectionObserver(handleIntersection, options);
+    if (target.current) io.observe(target.current);
+
+    offset === 0 && handleLoad(0, LIMIT);
+    return () => io && io.disconnect();
+  }, [target, offset]);
 
   const recipientData = useGetData("RECIPIENTS_ID", id, null, DEP);
-  const messageData = useGetData("RECIPIENTS_MESSAGES", id, 1000, DEP);
   const reactions = useGetData("RECIPIENTS_REACTIONS", id, null, DEP);
 
   checkEditToken(id, path);
-  if (!recipientData || !messageData) return;
+  if (!recipientData || !reactions) return;
 
   return (
     <>
@@ -41,9 +77,13 @@ function Layout({ path = "" }) {
       <Background $color={recipientData.backgroundColor} $url={recipientData.backgroundImageURL}>
         {recipientData.backgroundImageURL && <Mask></Mask>}
         <Container>
-          <ButtonControl recipientData={recipientData} setDEP={setDEP} path={path} delList={delList} setDelList={setDelList} recentMessages={messageData} />
-          <CardGrid path={path} messageCount={recipientData.messageCount} recentMessages={messageData} setDelList={setDelList} />
+          <ButtonControl name={recipientData.name} setOffset={setOffset} setDEP={setDEP} path={path} delList={delList} setDelList={setDelList} />
+          <CardGrid path={path} messageCount={recipientData.messageCount} recentMessages={items} setDelList={setDelList} />
         </Container>
+        <div ref={target}></div>
+        <button onClick={handleClick}>
+          <img src={arrowImg} />
+        </button>
       </Background>
     </>
   );
@@ -80,6 +120,8 @@ const Container = styled.div`
   width: 120rem;
   padding-top: 6.3rem;
   margin: 0 auto;
+
+  position: relative;
 
   display: flex;
   flex-direction: column;

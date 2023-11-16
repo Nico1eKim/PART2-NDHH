@@ -10,7 +10,7 @@ import { FONT14, FONT14B, FONT18B } from "@/styles/FontStyles";
 import { getURL } from "@/utils/getURL";
 import PropTypes from "prop-types";
 import { useRef } from "react";
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 
 Option.propTypes = {
   color: PropTypes.oneOf(["beige", "purple", "blue", "green", "red"]),

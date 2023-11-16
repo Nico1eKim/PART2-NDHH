@@ -19,7 +19,7 @@ function Layout() {
   if (!Cards) return;
 
   if (test && !Cards) {
-    setTimeout(() => setTest(false), 2000);
+    setTimeout(() => setTest(false), 1500);
     return <Skeleton />;
   }
 
@@ -29,15 +29,15 @@ function Layout() {
         <Search setKeyword={setKeyword} />
         {keyword ? (
           <>
-            <P>검색 결과</P>
-            <ListPageCards cards={SearchedCards}></ListPageCards>
+            <P>검색 결과 🔍</P>
+            {SearchedCards.length > 0 ? <ListPageCards cards={SearchedCards} /> : <EmptyMessage>검색된 롤링 페이퍼가 없습니다.</EmptyMessage>}
           </>
         ) : (
           <>
             <P>인기 롤링 페이퍼 🔥</P>
-            <ListPageCards cards={HottestCards}></ListPageCards>
+            <ListPageCards cards={HottestCards} />
             <P $Mobile>최근에 만든 롤링 페이퍼 ⭐️️</P>
-            <ListPageCards cards={NewestCards}></ListPageCards>
+            <ListPageCards cards={NewestCards} />
           </>
         )}
       </Container>
@@ -61,11 +61,11 @@ const Container = styled.div`
   justify-content: space-between;
 
   @media (max-width: ${DeviceSize.pc}) {
-    width: calc(100vw - 3.8rem);
+    width: calc(100vw - 4.8rem);
   }
 
   @media (max-width: ${DeviceSize.mobile}) {
-    width: calc(100vw - 3.8rem);
+    width: calc(100vw - 4.8rem);
   }
 `;
 
@@ -80,4 +80,10 @@ const P = styled.p`
     ${FONT20B};
     margin: ${(props) => (props.$Mobile ? "7.2rem 0 1.2rem 0" : "4rem 0 1.2rem 0")};
   }
+`;
+
+const EmptyMessage = styled.p`
+  ${FONT24B};
+  margin: 2rem 0;
+  color: gray;
 `;

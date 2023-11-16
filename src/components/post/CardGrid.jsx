@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   column-gap: min(1.6rem);
 
   @media (max-width: ${DeviceSize.tablet}) {
-    grid-template-columns: repeat(2, minmax(30rem, 50rem)); /* Assuming 500px is 50rem */
+    grid-template-columns: repeat(2, minmax(30rem, 50rem));
     gap: 1.6rem;
   }
 

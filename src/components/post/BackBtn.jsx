@@ -34,8 +34,13 @@ const Container_button = styled.button`
 
   position: absolute;
   top: 6.8rem;
-  left: 2.6rem;
+  left: 0;
+
   animation: ${back} 2s 0.5s infinite;
+
+  @media (max-width: 1248px) {
+    left: 2.4rem;
+  }
 
   img {
     width: 10rem;

@@ -57,7 +57,6 @@ const Container = styled.div`
 
   @media (max-width: ${DeviceSize.mobile}) {
     padding: 2.4rem 0 5.1rem;
-    /* gap: 4.8rem; */
 
     overflow: hidden;
   }

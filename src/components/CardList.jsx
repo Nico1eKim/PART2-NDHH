@@ -1,16 +1,15 @@
-import styled from "styled-components";
-import propTypes from "prop-types";
-import Badge from "@/components/commons/Badge";
-import ProfileImgList from "@/components/commons/ProfileImgList";
-import { DeviceSize } from "@/styles/DeviceSize";
-import { FONT16, FONT16B, FONT18B, FONT14, FONT14B, FONT24B } from "@/styles/FontStyles";
-import { COLOR } from "@/styles/ColorStyles";
-import { Z_INDEX } from "@/styles/ZindexStyles";
-import { useNavigate } from "react-router-dom";
-import patternPurple from "@/assets/pattern_purple.svg";
-import patternOrange from "@/assets/pattern_orange.svg";
 import patternBlue from "@/assets/pattern_blue.svg";
 import patternGreen from "@/assets/pattern_green.svg";
+import patternOrange from "@/assets/pattern_orange.svg";
+import patternPurple from "@/assets/pattern_purple.svg";
+import Badge from "@/components/commons/Badge";
+import ProfileImgList from "@/components/commons/ProfileImgList";
+import { COLOR } from "@/styles/ColorStyles";
+import { DeviceSize } from "@/styles/DeviceSize";
+import { FONT14, FONT14B, FONT16, FONT16B, FONT18B, FONT24B } from "@/styles/FontStyles";
+import { Z_INDEX } from "@/styles/ZindexStyles";
+import propTypes from "prop-types";
+import styled from "styled-components";
 
 /**
  * @param {*} data Recipient 데이터 객체

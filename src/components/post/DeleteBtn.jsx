@@ -7,7 +7,7 @@ import useModal from "@/hooks/useModal";
 import { DeviceSize } from "@/styles/DeviceSize";
 import { Z_INDEX } from "@/styles/ZindexStyles";
 
-function DeleteBtn({ name, recentMessages }) {
+function DeleteBtn({ name }) {
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
 
   return (
@@ -20,7 +20,7 @@ function DeleteBtn({ name, recentMessages }) {
       {isOpen && (
         <ModalPortal>
           <ModalFrame onClickClose={handleModalClose}>
-            <DeleteModal name={name} recentMessages={recentMessages} onClose={handleModalClose} />
+            <DeleteModal name={name} onClose={handleModalClose} />
           </ModalFrame>
         </ModalPortal>
       )}

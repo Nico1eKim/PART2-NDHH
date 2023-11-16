@@ -9,10 +9,11 @@ import { BASE_URL, ENDPOINTS } from "@/api/config";
  * @returns {Promise<Object>} - API 응답을 나타내는 Promise 객체
  */
 
-async function api(type, method, path, postData, limit) {
+async function api(type, method, path, postData, limit, nextURL) {
   const endpoint = ENDPOINTS[type][method];
   let url = typeof endpoint === "function" ? BASE_URL + endpoint(path) : BASE_URL + endpoint;
   if (limit) url = url + `?limit=${limit}`;
+  if (nextURL) url = nextURL;
 
   switch (method) {
     case "GET": {
@@ -31,7 +32,7 @@ async function api(type, method, path, postData, limit) {
           "Content-Type": "application/json",
         },
       });
-      const result = await postResponse.json()
+      const result = await postResponse.json();
       return result;
     }
     case "DELETE":

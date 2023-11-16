@@ -4,16 +4,13 @@ import styled from "styled-components";
 import Button from "./commons/Button";
 import api from "@/api/api";
 
-function DeleteModal({ name, recentMessages, onClose }) {
+function DeleteModal({ name, onClose }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const handlePostDelete = async (event) => {
     event.preventDefault();
 
-    for (let msg of recentMessages) {
-      const result = await api("MESSAGES", "DELETE", msg.id);
-    }
     const res = await api("RECIPIENTS_ID", "DELETE", id * 1);
     if (res) {
       onClose();

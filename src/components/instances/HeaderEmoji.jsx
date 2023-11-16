@@ -1,10 +1,9 @@
-import styled from "styled-components";
-import { useRef, useState } from "react";
-import { Reactions } from "@/constants/mockUp";
-import { DeviceSize, DeviceSizeNum } from "@/styles/DeviceSize";
-import Badge from "@/components/commons/Badge";
 import arrowDown from "@/assets/arrow_down.svg";
+import Badge from "@/components/commons/Badge";
+import { DeviceSize, DeviceSizeNum } from "@/styles/DeviceSize";
 import { Z_INDEX } from "@/styles/ZindexStyles";
+import { useRef, useState } from "react";
+import styled from "styled-components";
 import EmojiPickButton from "./EmojiPickButton";
 
 function HeaderEmojis({ topReactions, reactions, id, setDEP }) {

@@ -4,7 +4,7 @@ import { FONT15 } from "@/styles/FontStyles";
 import { Z_INDEX } from "@/styles/ZindexStyles";
 import shareKakaoTalk from "@/utils/shareKakao";
 import { useRef, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Toast from "../commons/Toast";
 
 function ShareDropdownButton({ userData }) {

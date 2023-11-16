@@ -65,7 +65,7 @@ const Container = styled.div`
   align-self: center;
 
   @media (max-width: ${DeviceSize.pc}) {
-    width: 100%; // 3개 이하일때 중앙정렬 안됨
+    width: 100%;
     align-self: flex-start;
   }
 `;

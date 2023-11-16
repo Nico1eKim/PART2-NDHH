@@ -6,7 +6,7 @@ import useGetWindowWidth from "@/hooks/useGetWindowWidth";
 import { DeviceSizeNum } from "@/styles/DeviceSize";
 import BackBtn from "@/components/post/BackBtn";
 
-function ButtonControl({ recipientData, setDEP, path, delList, setDelList, recentMessages }) {
+function ButtonControl({ name, setDEP, path, delList, setDelList, setOffset }) {
   const windowWidth = useGetWindowWidth();
   const password = recipientData.name.slice(-4);
   const userName = recipientData.name.slice(0, -4);
@@ -17,13 +17,13 @@ function ButtonControl({ recipientData, setDEP, path, delList, setDelList, recen
       {path === "edit" ? (
         windowWidth > DeviceSizeNum.tablet ? (
           <ButtonWrapper>
-            <DeleteBtn name={userName} recentMessages={recentMessages} />
-            <SaveBtn pc={true} setDEP={setDEP} delList={delList} setDelList={setDelList} />
+            <DeleteBtn name={userName} />
+            <SaveBtn pc={true} setDEP={setDEP} delList={delList} setDelList={setDelList} setOffset={setOffset} />
           </ButtonWrapper>
         ) : (
           <>
-            <DeleteBtn name={userName} recentMessages={recentMessages} />
-            <SaveBtn setDEP={setDEP} delList={delList} setDelList={setDelList} />
+            <DeleteBtn name={userName} />
+            <SaveBtn setDEP={setDEP} delList={delList} setDelList={setDelList} setOffset={setOffset} />
           </>
         )
       ) : (

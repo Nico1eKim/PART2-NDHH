@@ -1,6 +1,5 @@
 import Button from "@/components/commons/Button.jsx";
 import styled from "styled-components";
-import { FONT18B } from "@/styles/FontStyles.js";
 import { DeviceSize } from "@/styles/DeviceSize.js";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +13,6 @@ function FixedButton({ children, link }) {
   return (
     <Container onClick={handleClick}>
       <Button type="primary" height="xl">
-        {/* <ButtonText>{children}</ButtonText> */}
         {children}
       </Button>
     </Container>
@@ -32,26 +30,12 @@ const Container = styled.div`
   transform: translateX(-50%);
 
   @media (max-width: ${DeviceSize.pc}) {
-    width: calc(100vw - 6.2rem);
+    width: calc(100vw - 4.9rem);
     bottom: 2.4rem;
   }
 
   @media (max-width: ${DeviceSize.mobile}) {
-    width: calc(100vw - 5.5rem);
+    width: calc(100vw - 4.9rem);
     bottom: 2.4rem;
   }
 `;
-
-// const ButtonText = styled.p`
-//   width: 23.2rem;
-
-//   ${FONT18B}
-
-//   @media (max-width: ${DeviceSize.pc}) {
-//     width: calc(100vw - 15rem);
-//   }
-
-//   @media (max-width: ${DeviceSize.mobile}) {
-//     width: calc(100vw - 9.2rem);
-//   }
-// `;
