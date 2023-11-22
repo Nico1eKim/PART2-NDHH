@@ -1,8 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { FONT14, FONT20B } from "@/styles/FontStyles";
-import styled from "styled-components";
-import Button from "./commons/Button";
 import api from "@/api/api";
+import { FONT14, FONT20B } from "@/styles/FontStyles";
+import { useNavigate, useParams } from "react-router-dom";
+import styled from "styled-components";
+import Button from "../Button";
 
 function DeleteModal({ name, onClose }) {
   const { id } = useParams();
@@ -24,7 +24,7 @@ function DeleteModal({ name, onClose }) {
         <Text>삭제하시겠습니까?</Text>
         <Content>{name} 의 롤링페이퍼</Content>
       </Wrapper>
-      <Button width="100" height="l" type="error">
+      <Button autoFocus width="100" height="l" type="error">
         확인
       </Button>
     </Container>

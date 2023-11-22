@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { FONT12, FONT14, FONT16 } from "@/styles/FontStyles";
 import { COLOR, REL } from "@/styles/ColorStyles";
 import { DeviceSize } from "@/styles/DeviceSize";
+import { FONT12, FONT14, FONT16 } from "@/styles/FontStyles";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 
 Badge.propTypes = {
   children: PropTypes.string,

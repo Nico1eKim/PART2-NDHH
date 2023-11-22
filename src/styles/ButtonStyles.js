@@ -112,22 +112,22 @@ export const TYPES = {
     --border-radius: 0.6rem;
   `,
   error: css`
-  --color: var(--White);
-  --border-color: var(--Error2);
-  --bg-color: var(--Error2);
+    --color: var(--White);
+    --border-color: var(--Error2);
+    --bg-color: var(--Error2);
 
-  --hover-color: var(--White);
-  --hover-border-color: var(--Error1);
-  --hover-bg-color: var(--Error1);
+    --hover-color: var(--White);
+    --hover-border-color: var(--Error1);
+    --hover-bg-color: var(--Error1);
 
-  --pressed-color: var(--White);
-  --pressed-border-color: var(--Error3);
-  --pressed-bg-color: var(--Error3);
+    --pressed-color: var(--White);
+    --pressed-border-color: var(--Error3);
+    --pressed-bg-color: var(--Error3);
 
-  --focus-color: var(--White);
-  --focus-bg-color: var(--Error3);
-  --focus-border-color: var(--Error3);
-  `
+    --focus-color: var(--White);
+    --focus-bg-color: var(--Error3);
+    --focus-border-color: var(--Error3);
+  `,
 };
 
 export const SELECTED = {

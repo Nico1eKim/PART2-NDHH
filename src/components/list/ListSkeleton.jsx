@@ -1,8 +1,7 @@
-import React from "react";
 import ContentLoader from "react-content-loader";
 import { styled } from "styled-components";
 
-const Skeleton = () => {
+const ListSkeleton = () => {
   const cardWidth = 275;
   const cardHeight = 260;
   const searchWidth = 700;
@@ -58,4 +57,4 @@ const Container = styled.div`
   top: 50px;
 `;
 
-export default Skeleton;
+export default ListSkeleton;

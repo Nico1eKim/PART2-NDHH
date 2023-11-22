@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import DeleteModal from "@/components/commons/modal/DeleteModal";
+import ModalFrame from "@/components/commons/modal/ModalFrame";
+import ModalPortal from "@/components/commons/modal/ModalPortal";
 import Button from "@/components/commons/Button";
-import ModalPortal from "@/components/ModalPortal";
-import ModalFrame from "@/components/ModalFrame";
-import DeleteModal from "@/components/DeleteModal";
 import useModal from "@/hooks/useModal";
 import { DeviceSize } from "@/styles/DeviceSize";
 import { Z_INDEX } from "@/styles/ZindexStyles";
+import styled from "styled-components";
 
 function DeleteBtn({ name }) {
   const { isOpen, handleModalOpen, handleModalClose } = useModal();

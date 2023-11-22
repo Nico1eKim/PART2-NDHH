@@ -1,6 +1,5 @@
 import api from "@/api/api";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // 각 메소드에 따른 함수 사용 순서

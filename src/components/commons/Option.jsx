@@ -1,9 +1,9 @@
 import CHECKIMG from "@/assets/check.svg";
 import PLUSIMG from "@/assets/plus_icon.svg";
-import ModalFrame from "@/components/ModalFrame";
-import ModalPortal from "@/components/ModalPortal";
 import Button from "@/components/commons/Button";
 import Input from "@/components/commons/Input";
+import ModalFrame from "@/components/commons/modal/ModalFrame";
+import ModalPortal from "@/components/commons/modal/ModalPortal";
 import useModal from "@/hooks/useModal";
 import { DeviceSize } from "@/styles/DeviceSize";
 import { FONT14, FONT14B, FONT18B } from "@/styles/FontStyles";
@@ -45,12 +45,13 @@ function OptionColor({ color, check, ...props }) {
 
 const REG = /^http[s]?:\/\/([\S]{3,})/i;
 
-function OptionImg({ check, setValue, img, setImgs, setSelected, ...props }) {
+function OptionImg({ check, value, setValue, img, setImgs, setSelected, ...props }) {
   const handleChange = (event) => {
     const file = event.target.files[0];
     if (file && file.size < 1024 ** 2 * 3) {
       (async function (file) {
         const URL = await getURL(file);
+        console.log(URL);
         setSelected(0);
         setImgs((prev) => [URL, ...prev]);
         setValue((prev) => ({ ...prev, URL }));
@@ -61,14 +62,16 @@ function OptionImg({ check, setValue, img, setImgs, setSelected, ...props }) {
   const handleSubmit = (handleModalClose) => (ref) => (event) => {
     event.preventDefault();
     const URL = ref.current.value;
-    if (REG.test(URL)) {
-      setSelected(0);
-      setImgs((prev) => [URL, ...prev]);
-      setValue((prev) => ({ ...prev, URL }));
-      handleModalClose();
-      return;
+    if (!REG.test(URL)) {
+      return setValue((prev) => ({ ...prev, error: "정확한 URL 주소를 입력해주세요" }));
     }
-    alert("정확한 URL 주소를 입력해주세요.");
+    if (URL.length > 200) {
+      return setValue((prev) => ({ ...prev, error: "축약된 URL 주소를 입력해주세요." }));
+    }
+    setSelected(0);
+    setImgs((prev) => [URL, ...prev]);
+    setValue((prev) => ({ ...prev, URL, error: null }));
+    handleModalClose();
   };
 
   return (
@@ -84,7 +87,7 @@ function OptionImg({ check, setValue, img, setImgs, setSelected, ...props }) {
           <img src={PLUSIMG} alt="이미지 추가하기" />
           <InputFile onChange={handleChange} />
           <span></span>
-          <InputURL onSubmit={handleSubmit} />
+          <InputURL value={value} onSubmit={handleSubmit} />
         </>
       )}
     </Container>
@@ -141,7 +144,7 @@ function InputURL({ onSubmit, ...props }) {
   );
 }
 
-function InputModal({ onSubmit }) {
+function InputModal({ value, onSubmit }) {
   const input = useRef();
 
   return (
@@ -151,7 +154,8 @@ function InputModal({ onSubmit }) {
         <p>Tab + Shift로 뒤로 돌아갈 수 있습니다.</p>
       </div>
       <InputWrapper>
-        <Input inputRef={input} placeholder="이미지 주소 붙여넣기" autoFocus />
+        <Input inputRef={input} pwError={value?.error} placeholder="이미지 주소 붙여넣기" autoFocus />
+        {value?.error ? <p>{value.error}</p> : null}
       </InputWrapper>
       <Button width="100" height="l" type="primary">
         확인
@@ -288,9 +292,16 @@ const Container__modal = styled.form`
   }
 
   p {
+    ${FONT14}
     color: var(--Gray4);
   }
 `;
 const InputWrapper = styled.div`
   width: 100%;
+
+  > p {
+    margin-top: 1rem;
+    color: var(--Error2);
+    ${FONT14B}
+  }
 `;

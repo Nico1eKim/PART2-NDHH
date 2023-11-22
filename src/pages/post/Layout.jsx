@@ -1,6 +1,7 @@
-import Header from "@/components/Header";
+import Header from "@/components/commons/header/Header";
 import ButtonControl from "@/components/post/ButtonControl";
 import CardGrid from "@/components/post/CardGrid";
+import PostSkeleton from "@/components/post/PostSkeleton";
 import useGetData from "@/hooks/useGetData";
 import { DeviceSize } from "@/styles/DeviceSize";
 import { checkEditToken } from "@/utils/checkEditToken";
@@ -21,8 +22,11 @@ function Layout({ path = "" }) {
   const messageData = useGetData("RECIPIENTS_MESSAGES", id, DEP, 1000);
   const reactions = useGetData("RECIPIENTS_REACTIONS", id, DEP);
   const [delList, setDelList] = useState([]);
-
   checkEditToken(id, path);
+
+  if (!recipientData || !messageData || !reactions) {
+    return <PostSkeleton />;
+  }
 
   return (
     recipientData &&

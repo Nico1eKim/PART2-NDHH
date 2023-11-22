@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { FONT16 } from "@/styles/FontStyles";
-import { DeviceSize } from "@/styles/DeviceSize";
-import COMPLETED_IMG from "@/assets/completed.svg";
 import CLOSE_IMG from "@/assets/close.svg";
+import COMPLETED_IMG from "@/assets/completed.svg";
+import { DeviceSize } from "@/styles/DeviceSize";
+import { FONT16 } from "@/styles/FontStyles";
+import styled from "styled-components";
 
 function Toast({ ...props }) {
   return (

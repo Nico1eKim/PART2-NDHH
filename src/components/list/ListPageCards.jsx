@@ -1,10 +1,10 @@
-import { useState } from "react";
-import styled from "styled-components";
-import CardList from "@/components/CardList";
 import Button from "@/components/commons/Button";
+import CardList from "@/components/list/CardList";
 import { DeviceSize } from "@/styles/DeviceSize";
 import { Z_INDEX } from "@/styles/ZindexStyles";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 function ListPageCards({ cards }) {
   const [scrollX, setScrollX] = useState(0);

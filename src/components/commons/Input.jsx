@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import { FONT12, FONT16 } from "@/styles/FontStyles";
 import PropTypes from "prop-types";
-import { FONT16, FONT12 } from "@/styles/FontStyles";
+import styled from "styled-components";
 
 Input.propTypes = {
   placeholder: PropTypes.string,

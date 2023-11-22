@@ -11,8 +11,8 @@ const shareKakaoTalk = (url, name, image) => {
     kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: `롤링 페이퍼 | ${name}`,
-        description: `지금 바로 ${name}님에게 편지를 보내보세요🤍`,
+        title: `롤링 페이퍼 | ${name.slice(0, -4)}`,
+        description: `지금 바로 ${name.slice(0, -4)}님에게 편지를 보내보세요🤍`,
         imageUrl: image,
         link: {
           webUrl: url,

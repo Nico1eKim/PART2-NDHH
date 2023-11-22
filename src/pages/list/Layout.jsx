@@ -1,26 +1,23 @@
-import FixedButton from "@/components/instances/FixedButton.jsx";
+import FixedButton from "@/components/commons/FixedButton";
 import ListPageCards from "@/components/list/ListPageCards.jsx";
+import ListSkeleton from "@/components/list/ListSkeleton";
 import Search from "@/components/list/Search";
 import useGetData from "@/hooks/useGetData";
 import { DeviceSize } from "@/styles/DeviceSize";
 import { FONT20B, FONT24B } from "@/styles/FontStyles.js";
 import { sortHot, sortNew } from "@/utils/sort";
-import Skeleton from "@/components/instances/Skeleton";
 import { useMemo, useState } from "react";
 import styled from "styled-components";
 
 function Layout() {
-  const [test, setTest] = useState(true);
   const [keyword, setKeyword] = useState("");
-  const Cards = useGetData("RECIPIENTS", null, 1000);
+  const Cards = useGetData("RECIPIENTS", null, null, 1000);
   const NewestCards = useMemo(() => Cards && sortNew([...Cards]), [Cards]);
   const HottestCards = useMemo(() => Cards && sortHot([...Cards]), [Cards]);
   const SearchedCards = useMemo(() => keyword && Cards.filter(({ name }) => name.slice(0, -4).toLowerCase().includes(keyword.toLowerCase())), [keyword]);
-  if (!Cards) return;
 
-  if (test && !Cards) {
-    setTimeout(() => setTest(false), 1500);
-    return <Skeleton />;
+  if (!Cards) {
+    return <ListSkeleton />;
   }
 
   return (
@@ -34,9 +31,9 @@ function Layout() {
           </>
         ) : (
           <>
-            <P>인기 롤링 페이퍼 🔥</P>
+            <P>인기 롤링 페이퍼 10 🔥</P>
             <ListPageCards cards={HottestCards} />
-            <P $Mobile>최근에 만든 롤링 페이퍼 ⭐️️</P>
+            <P $Mobile>최근에 만든 롤링 페이퍼 10 ⭐️️</P>
             <ListPageCards cards={NewestCards} />
           </>
         )}

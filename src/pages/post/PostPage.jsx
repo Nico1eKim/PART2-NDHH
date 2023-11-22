@@ -1,4 +1,4 @@
-import Header from "@/components/Header.jsx";
+import Header from "@/components/commons/header/Header.jsx";
 import useGetWindowWidth from "@/hooks/useGetWindowWidth";
 import { DeviceSizeNum } from "@/styles/DeviceSize";
 import Layout from "./Layout";

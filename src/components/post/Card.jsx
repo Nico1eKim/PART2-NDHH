@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import propTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
-import { formatDate } from "@/utils/formatDate";
-import { FONT12, FONT16, FONT20, FONT20B } from "@/styles/FontStyles";
-import { DeviceSize } from "@/styles/DeviceSize";
+import defaultImg from "@/assets/default_profile.svg";
 import Badge from "@/components/commons/Badge";
 import Button from "@/components/commons/Button";
-import defaultImg from "@/assets/default_profile.svg";
+import { DeviceSize } from "@/styles/DeviceSize";
+import { FONT12, FONT20, FONT20B } from "@/styles/FontStyles";
+import { formatDate } from "@/utils/formatDate";
+import propTypes from "prop-types";
 import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import styled from "styled-components";
 
 /**
  * @param {*} data 메세지 데이터 객체
@@ -23,7 +23,7 @@ function Card({ type, data = null, onCardClick, setDelList }) {
   if (type === "Plus") {
     return (
       <Container $type="Plus">
-        <Link to={`/post/${id}/message`}>
+        <Link tabIndex={-1} to={`/post/${id}/message`}>
           <PlusIcon>
             <Button type="plus" />
           </PlusIcon>
@@ -60,7 +60,9 @@ function Card({ type, data = null, onCardClick, setDelList }) {
       </Profile>
       <ContentWrapper>
         <Content dangerouslySetInnerHTML={{ __html: content }}></Content>
-        <More onClick={() => onCardClick(data)}>더보기</More>
+        <More tabIndex={0} onClick={onCardClick(data)}>
+          더보기
+        </More>
       </ContentWrapper>
       <Date>{formatDate(createdAt)}</Date>
     </Container>
@@ -179,7 +181,7 @@ const PlusIcon = styled.div`
   height: 5.6rem;
 `;
 
-const More = styled.div`
+const More = styled.button`
   ${FONT12}
   color: var(--Gray4);
   text-align: right;

@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router";
-import arrowWhite from "@/assets/backarrow_white.svg";
 import arrowBlack from "@/assets/backarrow_black.svg";
+import arrowWhite from "@/assets/backarrow_white.svg";
+import { useNavigate } from "react-router";
 import styled, { keyframes } from "styled-components";
 
 function BackBtn({ URL }) {

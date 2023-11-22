@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import useNotScroll from "@/hooks/useNotScroll";
 import { Z_INDEX } from "@/styles/ZindexStyles";
+import styled from "styled-components";
 
 function ModalFrame({ children, onClickClose }) {
   useNotScroll();

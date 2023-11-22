@@ -1,10 +1,9 @@
-import { useNavigate, useParams } from "react-router-dom";
 import { FONT18B } from "@/styles/FontStyles";
+import { useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import Input from "./commons/Input";
-import Button from "./commons/Button";
-import { useState } from "react";
-import { useRef } from "react";
+import Button from "../Button";
+import Input from "../Input";
 
 function InputModal({ password, onClose }) {
   const [pwError, setPwError] = useState(false);
@@ -32,7 +31,7 @@ function InputModal({ password, onClose }) {
     <Container onSubmit={handlePasswordCheck}>
       <Text>🔐 비밀번호를 입력하세요.</Text>
       <InputWrapper>
-        <Input placeholder="●●●●" pwError={pwError} inputRef={inputRef} />
+        <Input autoFocus placeholder="●●●●" pwError={pwError} inputRef={inputRef} />
       </InputWrapper>
       <Button width="100" height="l" type="primary">
         확인

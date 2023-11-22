@@ -1,4 +1,5 @@
 import { FONT12, FONT14, FONT16 } from "@/styles/FontStyles";
+import { useRef } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
@@ -52,25 +53,39 @@ const CustomToolbar = () => (
   </div>
 );
 
+let KEY = {};
+
 function TextEditor({ setValue }) {
+  const editor = useRef();
   const handleChange = (content, delta, source, editor) => {
-    console.log(editor.getContents());
     setValue((prev) => ({ ...prev, content }));
+  };
+
+  const handleKeyUp = (event) => {
+    if (KEY.Control && event.key === "Control") {
+      editor.current.blur();
+      KEY = {};
+      return;
+    }
+    KEY[event.key] = event.key;
   };
 
   return (
     <Container>
       <CustomToolbar />
       <ReactQuill
+        ref={editor}
         style={{ width: "100%", height: "26rem" }}
         placeholder="당신의 마음을 표현하세요."
         onChange={handleChange}
+        onKeyUp={handleKeyUp}
         modules={{
           toolbar: {
             container: "#toolbar",
           },
         }}
       />
+      <p>키보드 사용자는 Ctrl 두 번 눌러 다음으로 갈 수 있어요.</p>
     </Container>
   );
 }
@@ -82,6 +97,7 @@ const Container = styled.div`
     padding: 1.6rem;
 
     display: flex;
+    flex-wrap: wrap;
     gap: 1.2rem;
 
     border-top-right-radius: 0.8rem;
@@ -103,6 +119,12 @@ const Container = styled.div`
 
   .ql-picker {
     width: 3.2rem;
+    height: 100%;
+  }
+
+  .ql-picker-label {
+    display: flex;
+    align-items: center;
   }
 
   .ql-container {
@@ -132,5 +154,17 @@ const Container = styled.div`
     border-bottom-right-radius: 0.8rem;
     border-bottom-left-radius: 0.8rem;
     background-color: var(--Gray3);
+  }
+
+  > p {
+    visibility: hidden;
+    ${FONT12}
+    color: var(--Gray6);
+  }
+
+  &:focus-within {
+    > p {
+      visibility: visible;
+    }
   }
 `;

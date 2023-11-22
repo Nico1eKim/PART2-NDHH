@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import PropTypes from "prop-types";
 import { FONT12 } from "@/styles/FontStyles";
 import { Z_INDEX } from "@/styles/ZindexStyles";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 /**
  * @param {*} data recentMessages 배열

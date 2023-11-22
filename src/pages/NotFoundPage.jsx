@@ -1,8 +1,8 @@
-import { Helmet } from "react-helmet-async";
-import styled from "styled-components";
 import logoImg from "@/assets/Logo.svg";
-import { Link } from "react-router-dom";
 import { FONT16B, FONT28B } from "@/styles/FontStyles";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 function NotFoundPage() {
   return (

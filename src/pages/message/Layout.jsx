@@ -1,7 +1,7 @@
 import Dropdown from "@/components/commons/Dropdown";
 import TextEditor from "@/components/commons/Editor";
 import Option from "@/components/commons/Option";
-import { Container, Submit, Title } from "@/components/instances/CreateMessage";
+import { Container, Submit, Title } from "@/components/commons/CreateMessage";
 import { REL } from "@/styles/ColorStyles";
 import { FONT16, FONT24B } from "@/styles/FontStyles";
 import { useState } from "react";
@@ -30,7 +30,7 @@ function Layout() {
   return (
     <Container>
       <Title message value={value.sender} setValue={setValue} />
-      <Profile setValue={setValue} />
+      <Profile value={value} setValue={setValue} />
       <Relationship value={value.relationship} setValue={setValue} />
       <Edit setValue={setValue} />
       <Submit value={value} />
@@ -51,7 +51,7 @@ function Profile({ ...props }) {
   );
 }
 
-function ProfileImgControl({ setValue }) {
+function ProfileImgControl({ ...props }) {
   const [imgs, setImgs] = useState(DEFAULT);
   const [selected, setSelected] = useState(0);
 
@@ -59,12 +59,12 @@ function ProfileImgControl({ setValue }) {
     <Contents__profileControl>
       <ProfileImg $src={imgs[selected]} alt="설정된 프로필 이미지" />
       <p>{imgs.length > 1 ? `상대에게 설명해 줄 나의 모습.` : `어떤 모습이든지. 아름다운 당신.`}</p>
-      <AddImg setValue={setValue} imgs={imgs} setImgs={setImgs} selected={selected} setSelected={setSelected} />
+      <AddImg imgs={imgs} setImgs={setImgs} selected={selected} setSelected={setSelected} {...props} />
     </Contents__profileControl>
   );
 }
 
-function AddImg({ setValue, imgs, setImgs, selected, setSelected }) {
+function AddImg({ value, setValue, imgs, setImgs, selected, setSelected }) {
   const handleClick = (idx, URL) => () => {
     setSelected(idx);
     setValue((prev) => ({ ...prev, URL }));
@@ -72,7 +72,7 @@ function AddImg({ setValue, imgs, setImgs, selected, setSelected }) {
 
   return (
     <Contents__addImg>
-      <Option setValue={setValue} setImgs={setImgs} setSelected={setSelected} />
+      <Option value={value} setValue={setValue} setImgs={setImgs} setSelected={setSelected} />
       {imgs.map((img, idx) => (
         <Option key={idx} alt={`${idx + 1}번째로 추가한 사진`} check={selected === idx} img={img} onClick={handleClick(idx, img)} />
       ))}
@@ -166,6 +166,7 @@ const Contents__addImg = styled.div`
   grid-area: add;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   > button:first-child {
     background-color: var(--Gray5);

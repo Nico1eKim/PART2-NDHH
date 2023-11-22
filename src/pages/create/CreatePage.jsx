@@ -1,6 +1,6 @@
-import Header from "../../components/Header";
-import Layout from "./Layout";
 import { Helmet } from "react-helmet-async";
+import Header from "../../components/commons/header/Header";
+import Layout from "./Layout";
 
 function CreatePage() {
   return (

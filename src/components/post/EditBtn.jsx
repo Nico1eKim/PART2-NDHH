@@ -1,25 +1,37 @@
-import styled from "styled-components";
 import Button from "@/components/commons/Button";
-import ModalPortal from "@/components/ModalPortal";
-import ModalFrame from "@/components/ModalFrame";
-import InputModal from "@/components/InputModal";
+import InputModal from "@/components/commons/modal/InputModal";
+import ModalFrame from "@/components/commons/modal/ModalFrame";
+import ModalPortal from "@/components/commons/modal/ModalPortal";
 import useModal from "@/hooks/useModal";
 import { DeviceSize } from "@/styles/DeviceSize";
 import { Z_INDEX } from "@/styles/ZindexStyles";
+import { useState } from "react";
+import styled from "styled-components";
 
 function EditBtn({ password }) {
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
+  const [button, setButton] = useState();
+
+  const handleOpen = (event) => {
+    setButton(event.target);
+    handleModalOpen();
+  };
+
+  const handleClose = () => {
+    button.focus();
+    handleModalClose();
+  };
 
   return (
     <>
       <Wrapper>
-        <Button type="outlined" height="l" width="100" onClick={handleModalOpen}>
+        <Button type="outlined" height="l" width="100" onClick={handleOpen}>
           편집하기
         </Button>
       </Wrapper>
       {isOpen && (
         <ModalPortal>
-          <ModalFrame onClickClose={handleModalClose}>
+          <ModalFrame onClickClose={handleClose}>
             <InputModal password={password} onClose={handleModalClose} />
           </ModalFrame>
         </ModalPortal>

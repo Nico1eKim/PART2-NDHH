@@ -1,6 +1,6 @@
 import { BLUE, GRAYSCALE, GREEN, MAIN, ORANGE, PURPLE } from "@/styles/ColorStyles";
 import { createGlobalStyle, keyframes } from "styled-components";
-import { FONTFAMILY } from './FontStyles';
+import { FONTFAMILY } from "./FontStyles";
 
 const fadeIn = keyframes`
   0% {

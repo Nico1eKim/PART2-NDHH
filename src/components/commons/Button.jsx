@@ -1,14 +1,14 @@
-import styled, { css } from "styled-components";
-import PropTypes from "prop-types";
 import iconBlack from "@/assets/add-24-black.svg";
 import iconWhite from "@/assets/add-24-white.svg";
-import plusIcon from "@/assets/plus.svg";
+import arrowLeft from "@/assets/arrow_left.svg";
+import arrowRight from "@/assets/arrow_right.svg";
 import deleteBlack from "@/assets/deleted_black.svg";
 import deleteWhite from "@/assets/deleted_white.svg";
+import plusIcon from "@/assets/plus.svg";
 import redo from "@/assets/redo.svg";
-import arrowRight from "@/assets/arrow_right.svg";
-import arrowLeft from "@/assets/arrow_left.svg";
 import { HEIGHTS, TYPES } from "@/styles/ButtonStyles";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 
 Button.propTypes = {
   width: PropTypes.string,

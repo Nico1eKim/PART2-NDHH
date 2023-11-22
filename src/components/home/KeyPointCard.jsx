@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { FONT14B, FONT15, FONT18, FONT18B, FONT24B } from "@/styles/FontStyles";
 import { DeviceSize } from "@/styles/DeviceSize";
+import { FONT14B, FONT15, FONT18, FONT18B, FONT24B } from "@/styles/FontStyles";
+import styled from "styled-components";
 
 function KeyPointCard({ content, $isReverse = false }) {
   const { point, title1, title2, explain, image } = content;

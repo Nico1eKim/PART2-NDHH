@@ -1,7 +1,7 @@
 import Button from "@/components/commons/Button.jsx";
-import styled from "styled-components";
 import { DeviceSize } from "@/styles/DeviceSize.js";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 function FixedButton({ children, link }) {
   const navigate = useNavigate();

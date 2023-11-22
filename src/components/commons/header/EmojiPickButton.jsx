@@ -1,12 +1,12 @@
-import EmojiPicker from "emoji-picker-react";
-import { FONT14B, FONT16B } from "@/styles/FontStyles";
-import Button from "../commons/Button";
-import { useRef, useState } from "react";
-import { Z_INDEX } from "@/styles/ZindexStyles";
 import api from "@/api/api";
-import styled from "styled-components";
-import { DeviceSize } from "@/styles/DeviceSize";
 import { makeEmoji } from "@/api/makePostData";
+import { DeviceSize } from "@/styles/DeviceSize";
+import { FONT14B, FONT16B } from "@/styles/FontStyles";
+import { Z_INDEX } from "@/styles/ZindexStyles";
+import EmojiPicker from "emoji-picker-react";
+import { useRef, useState } from "react";
+import styled from "styled-components";
+import Button from "../Button";
 
 function EmojiPickButton({ id, setDEP }) {
   const containerRef = useRef(null);

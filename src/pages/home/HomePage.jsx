@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/commons/header/Header";
 import Layout from "@/pages/home/Layout";
 import { Helmet } from "react-helmet-async";
 

@@ -5,7 +5,7 @@ import { Z_INDEX } from "@/styles/ZindexStyles";
 import shareKakaoTalk from "@/utils/shareKakao";
 import { useRef, useState } from "react";
 import styled from "styled-components";
-import Toast from "../commons/Toast";
+import Toast from "../Toast";
 
 function ShareDropdownButton({ userData }) {
   const containerRef = useRef(null);
@@ -14,7 +14,7 @@ function ShareDropdownButton({ userData }) {
   const [isToastVisible, setIsToastVisible] = useState(false);
   const { id, name, backgroundImageURL } = userData;
 
-  const host = "http://localhost:5173";
+  const host = "https://ndhh.netlify.app";
   const currentPath = `/post/${id}`;
 
   const copyClipboard = () => {
@@ -44,7 +44,7 @@ function ShareDropdownButton({ userData }) {
   };
 
   const handleBlur = (event) => {
-    if (!containerRef.current.contains(event.relatedTarget)) {
+    if (!containerRef.current?.contains(event.relatedTarget)) {
       setIsMenuVisible(false);
     }
   };
@@ -66,7 +66,7 @@ function ShareDropdownButton({ userData }) {
           <button onClick={sendKakaoTalk}>
             <Text>카카오톡 공유</Text>
           </button>
-          <button onClick={copyClipboard}>
+          <button onClick={copyClipboard} onBlur={handleBlur}>
             <Text>URL 공유</Text>
           </button>
         </List>

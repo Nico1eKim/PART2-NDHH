@@ -1,7 +1,7 @@
 import introducePoint1 from "@/assets/introduce_point_1.svg";
 import introducePoint2 from "@/assets/introduce_point_2.svg";
-import FixedButton from "@/components/instances/FixedButton";
-import KeyPointCard from "@/components/instances/KeyPointCard";
+import KeyPointCard from "@/components/home/KeyPointCard";
+import FixedButton from "@/components/commons/FixedButton";
 import { DeviceSize } from "@/styles/DeviceSize";
 import styled from "styled-components";
 
